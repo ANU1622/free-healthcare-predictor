@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Healthcare Predicting System</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .outer-box {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: black;
+        }
+
+        .form-container {
+            background-image: url("/static/DBImage.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .form-group {
+            width: 48%;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .predict-btn {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #prediction {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="outer-box">
+    <h2>Free Healthcare Predicting System</h2>
+
+
+    <form action="/predict" method="post">
+        <div class="form-container">
+            <div class="form-group">
+                <label>Treatment Order(1-4):</label>
+                <input type="text" name="TrtOrder">
+            </div>
+
+            <div class="form-group">
+                <label>Compound (integer):</label>
+                <input type="text" name="compound">
+            </div>
+
+            <div class="form-group">
+                <label>Distance to a healthcare facility (km):</label>
+                <input type="text" name="dist1">
+            </div>
+
+            <div class="form-group">
+                <label>Log-transformed value of assets:</label>
+                <input type="text" name="LogAssets">
+            </div>
+
+            <div class="form-group">
+                <label>Diarrhea_2013 (0-1):</label>
+                <input type="text" name="Diarrhea_2013">
+            </div>
+
+            <div class="form-group">
+                <label>Literacy of the female adult (FA):</label>
+                <select name="LitFA" required>
+                    <option value="">--Select--</option>
+                    <option value="1">Literate</option>
+                    <option value="0">Illiterate</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Is the person enrolled in a health program?</label>
+                <select name="health_program_" required>
+                    <option value="">--Select--</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Total number of sick days in a week (0-7 integer values):</label>
+                <input type="text" name="Ill_days_total">
+            </div>
+
+            <div class="form-group">
+                <label>ORT_recipe:</label>
+                <select name="ORT_recipe" required>
+                    <option value="">--Select--</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Does the household use a mosquito net?</label>
+                <select name="Mosquito_net_status_" required>
+                    <option value="">--Select--</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Did the person receive treatment last week?</label>
+                <select name="Treatment_last_week_" required>
+                    <option value="">--Select--</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>How many months was the child breastfed?</label>
+                <select name="Months_breastfeeding" required>
+                    <option value="">-- Select --</option>
+                    <option value="0">0 (Never breastfed)</option>
+                    <option value="1">1</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="24">24</option>
+                    <option value="36">36</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Child's Age in Days:</label>
+                <input type="number" name="age_2014" min="400" max="3300" required>
+            </div>
+
+            <div class="form-group">
+                <label>Current Water Source:</label>
+                <select name="Current_water_source" required>
+                    <option value="">--Select--</option>
+                    <option value="1">Piped Water</option>
+                    <option value="2">Borehole</option>
+                    <option value="3">Well</option>
+                    <option value="4">River/Lake</option>
+                    <option value="5">Rainwater</option>
+                    <option value="6">Bottled Water</option>
+                </select>
+            </div>
+
+
+            <div>
+                <label>Vaccine Card available or not</label>
+                <select name="vaccine_card_" required>
+                    <option value="">--Select--</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+            </div>
+            <div>
+                <label>Did a health worker provide care?</label>
+                <select name="health_worker_provides_" required>
+                    <option value="">--Select--</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+            </div>
+        </div>
+        <button type="submit" class="predict-btn">Predict</button>
+    </form>
+
+    <div id="prediction">
+        <h3>Prediction Result:</h3>
+        <p>{{ prediction_text }}</p>
+    </div>
+</div>
+</body>
+</html>
+
+
+
