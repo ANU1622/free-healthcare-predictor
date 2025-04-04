@@ -74,32 +74,32 @@
     <form action="/predict" method="post">
         <div class="form-container">
             <div class="form-group">
-                <label>Treatment Order(1-4):</label>
-                <input type="text" name="TrtOrder">
+                <label>Treatment Category</label>
+                <select name="TrtOrder" required>
+                    <option value="">-- Select --</option>
+                    <option value="1">Control Group</option>
+                    <option value="2">Basic Information</option>
+                    <option value="3">Health Worker Visit</option>
+                    <option value="4">Comprehensive Support</option>
+                </select>
             </div>
 
-            <div class="form-group">
-                <label>Compound (integer):</label>
-                <input type="text" name="compound">
-            </div>
+
 
             <div class="form-group">
-                <label>Distance to a healthcare facility (km):</label>
+                <label>Distance to a Healthcare Facility (km)</label>
                 <input type="text" name="dist1">
             </div>
 
             <div class="form-group">
-                <label>Log-transformed value of assets:</label>
+                <label>Log-Transformed Value of Assets</label>
                 <input type="text" name="LogAssets">
             </div>
 
-            <div class="form-group">
-                <label>Diarrhea_2013 (0-1):</label>
-                <input type="text" name="Diarrhea_2013">
-            </div>
+
 
             <div class="form-group">
-                <label>Literacy of the female adult (FA):</label>
+                <label>Literacy of the Female Adult (Literate / Illiterate)</label>
                 <select name="LitFA" required>
                     <option value="">--Select--</option>
                     <option value="1">Literate</option>
@@ -108,7 +108,7 @@
             </div>
 
             <div class="form-group">
-                <label>Is the person enrolled in a health program?</label>
+                <label>Enrolled in a Health Program (Yes / No)</label>
                 <select name="health_program_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -117,12 +117,12 @@
             </div>
 
             <div class="form-group">
-                <label>Total number of sick days in a week (0-7 integer values):</label>
+                <label>Total Number of Sick Days in a Week:</label>
                 <input type="text" name="Ill_days_total">
             </div>
 
             <div class="form-group">
-                <label>ORT_recipe:</label>
+                <label>Knowledge or Use of Oral Rehydration Therapy (ORT) Recipe (Yes / No)</label>
                 <select name="ORT_recipe" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -131,7 +131,7 @@
             </div>
 
             <div class="form-group">
-                <label>Does the household use a mosquito net?</label>
+                <label>Household Uses a Mosquito Net (Yes / No)</label>
                 <select name="Mosquito_net_status_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -140,7 +140,7 @@
             </div>
 
             <div class="form-group">
-                <label>Did the person receive treatment last week?</label>
+                <label>Received Treatment in the Last Week (Yes / No)</label>
                 <select name="Treatment_last_week_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -149,7 +149,7 @@
             </div>
 
             <div class="form-group">
-                <label>How many months was the child breastfed?</label>
+                <label>Number of Months the Child Was Breastfed</label>
                 <select name="Months_breastfeeding" required>
                     <option value="">-- Select --</option>
                     <option value="0">0 (Never breastfed)</option>
@@ -181,7 +181,7 @@
             </div>
 
             <div class="form-group">
-                <label>Current Water Source:</label>
+                <label>Current Primary Source of Drinking Water</label>
                 <select name="Current_water_source" required>
                     <option value="">--Select--</option>
                     <option value="1">Piped Water</option>
@@ -195,7 +195,7 @@
 
 
             <div>
-                <label>Vaccine Card available or not</label>
+                <label>Vaccine Card Available (Yes / No)</label>
                 <select name="vaccine_card_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -204,7 +204,7 @@
 
             </div>
             <div>
-                <label>Did a health worker provide care?</label>
+                <label>Health Worker Provided Care (Yes / No)</label>
                 <select name="health_worker_provides_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
