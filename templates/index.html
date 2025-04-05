@@ -71,7 +71,7 @@
     <h2>Free Healthcare Predicting System</h2>
 
 
-    <form action="/predict" method="post">
+    <form action="/predict" method="post", autocomplete="off">
         <div class="form-container">
             <div class="form-group">
                 <label>Treatment Category</label>
@@ -99,7 +99,7 @@
 
 
             <div class="form-group">
-                <label>Literacy of the Female Adult (Literate / Illiterate)</label>
+                <label>Literacy of the Female Adult</label>
                 <select name="LitFA" required>
                     <option value="">--Select--</option>
                     <option value="1">Literate</option>
@@ -108,7 +108,7 @@
             </div>
 
             <div class="form-group">
-                <label>Enrolled in a Health Program (Yes / No)</label>
+                <label>Enrolled in a Health Program</label>
                 <select name="health_program_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -122,7 +122,7 @@
             </div>
 
             <div class="form-group">
-                <label>Knowledge or Use of Oral Rehydration Therapy (ORT) Recipe (Yes / No)</label>
+                <label>Knowledge or Use of Oral Rehydration Therapy (ORT) Recipe</label>
                 <select name="ORT_recipe" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -131,7 +131,7 @@
             </div>
 
             <div class="form-group">
-                <label>Household Uses a Mosquito Net (Yes / No)</label>
+                <label>Household Uses a Mosquito Net</label>
                 <select name="Mosquito_net_status_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -140,7 +140,7 @@
             </div>
 
             <div class="form-group">
-                <label>Received Treatment in the Last Week (Yes / No)</label>
+                <label>Received Treatment in the Last Week</label>
                 <select name="Treatment_last_week_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -176,9 +176,20 @@
             </div>
 
             <div class="form-group">
-                <label>Child's Age in Days:</label>
-                <input type="number" name="age_2014" min="400" max="3300" required>
+                <label>Child's Date of Birth</label>
+                <input type="date" id="dob" onchange="calculateAgeInDays()" required>
+                <input type="hidden" name="age_2014" id="age_2014">
             </div>
+
+            <script>
+                function calculateAgeInDays() {
+                    const dob = new Date(document.getElementById('dob').value);
+                    const today = new Date();
+                    const ageInDays = Math.floor((today - dob) / (1000 * 60 * 60 * 24));
+                    document.getElementById('age_2014').value = ageInDays;
+                }
+            </script>
+
 
             <div class="form-group">
                 <label>Current Primary Source of Drinking Water</label>
@@ -195,7 +206,7 @@
 
 
             <div>
-                <label>Vaccine Card Available (Yes / No)</label>
+                <label>Vaccine Card Available</label>
                 <select name="vaccine_card_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
@@ -204,7 +215,7 @@
 
             </div>
             <div>
-                <label>Health Worker Provided Care (Yes / No)</label>
+                <label>Health Worker Provided Care</label>
                 <select name="health_worker_provides_" required>
                     <option value="">--Select--</option>
                     <option value="1">Yes</option>
