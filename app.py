@@ -19,9 +19,9 @@ def predict():
     features=[np.array(float_features)]
     prediction=model.predict(features)
     if prediction == 0:
-        text = "Person has not utilized free care check"
+        text = "The individual is unlikely to utilize free healthcare services"
     else:
-        text = "Person has utilized free care check"
+        text = "The individual is likely to utilize free healthcare services"
     return render_template("index.html", prediction_text=text)
 
 if __name__=="__main__":
